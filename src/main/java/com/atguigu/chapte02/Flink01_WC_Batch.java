@@ -21,7 +21,7 @@ public class Flink01_WC_Batch {
         ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
 
         //从文件读取数据 (有界)
-        DataSource<String> fileDS = env.readTextFile("D:\\idea\\wokspace\\flink0421\\input\\word.txt");
+        DataSource<String> fileDS = env.readTextFile("input/word.txt");
 
         //处理数据
         //切分 转换成二元组（word,1）

@@ -19,19 +19,24 @@ public class Flink02_WC_BoundedStream {
         //创建执行环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
-        DataStreamSource<String> fileDS = env.readTextFile("D:\\idea\\wokspace\\flink0421\\input\\word.txt");
+        //读取数据
+        DataStreamSource<String> fileDS = env.readTextFile("input/word.txt");
 
+        //处理数据
+        //切分、转换成二元祖
         SingleOutputStreamOperator<Tuple2<String, Integer>> wordAndOneTuple = fileDS.flatMap(new MyFlattMapFunction());
 
+        //按照wird分组
         KeyedStream<Tuple2<String, Integer>, Tuple> wordAndOneKS = wordAndOneTuple.keyBy(0);
 
+        //按照分组聚合
         SingleOutputStreamOperator<Tuple2<String, Integer>> result = wordAndOneKS.sum(1);
 
+        //输出
         result.print();
 
+        //执行任务
         env.execute();
-
-
     }
 
     public static class MyFlattMapFunction implements FlatMapFunction<String, Tuple2<String, Integer>> {
