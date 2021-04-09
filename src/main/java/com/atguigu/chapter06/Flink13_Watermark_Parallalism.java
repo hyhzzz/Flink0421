@@ -22,7 +22,6 @@ public class Flink13_Watermark_Parallalism {
         // TODO 1.env指定时间语义
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
-        // 1.
         SingleOutputStreamOperator<WaterSensor> sensorDS = env
                 .socketTextStream("localhost", 9999)
                 .map(new MapFunction<String, WaterSensor>() {
@@ -41,8 +40,6 @@ public class Flink13_Watermark_Parallalism {
                             }
                         }
                 );
-
-
 
         SingleOutputStreamOperator<Long> resultDS = sensorDS
                 .keyBy(data -> data.getId())

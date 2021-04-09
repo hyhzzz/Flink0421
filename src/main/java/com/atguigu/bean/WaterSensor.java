@@ -1,7 +1,6 @@
 package com.atguigu.bean;
 
 /**
- *
  * @author chujian
  * @create 2021-03-20 20:44
  */

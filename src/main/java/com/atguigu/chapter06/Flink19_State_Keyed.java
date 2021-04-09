@@ -24,7 +24,6 @@ public class Flink19_State_Keyed {
         // TODO 1.env指定时间语义
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
-        // 1.
         SingleOutputStreamOperator<WaterSensor> sensorDS = env
                 .socketTextStream("localhost", 9999)
                 .map(new MapFunction<String, WaterSensor>() {
@@ -81,8 +80,6 @@ public class Flink19_State_Keyed {
                             }
                         }
                 );
-
-
         processDS.print();
 
         env.execute();

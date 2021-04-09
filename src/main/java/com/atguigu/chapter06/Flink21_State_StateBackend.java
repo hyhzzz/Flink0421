@@ -47,7 +47,6 @@ public class Flink21_State_StateBackend {
         // TODO 开启 checkpoint
         env.enableCheckpointing(3000L);
 
-        // 1.
         SingleOutputStreamOperator<WaterSensor> sensorDS = env
                 .socketTextStream("localhost", 9999)
                 .map(new MapFunction<String, WaterSensor>() {

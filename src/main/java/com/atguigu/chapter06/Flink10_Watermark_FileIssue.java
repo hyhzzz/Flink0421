@@ -62,7 +62,6 @@ public class Flink10_Watermark_FileIssue {
                         })
                 .print();
 
-
         env.execute();
     }
 }

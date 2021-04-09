@@ -11,13 +11,6 @@ import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
 
-/**
- * TODO
- *
- * @author cjp
- * @version 1.0
- * @date 2020/9/19 11:22
- */
 public class Flink07_Watermark_OutOfOrderness {
     public static void main(String[] args) throws Exception {
         // 0 执行环境
@@ -27,7 +20,6 @@ public class Flink07_Watermark_OutOfOrderness {
         // TODO 1.env指定时间语义
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
-        // 1.
         SingleOutputStreamOperator<WaterSensor> sensorDS = env
                 .socketTextStream("localhost", 9999)
                 .map(new MapFunction<String, WaterSensor>() {
@@ -42,7 +34,6 @@ public class Flink07_Watermark_OutOfOrderness {
                 // 官方提供了一个 BoundedOutOfOrdernessTimestampExtractor 乱序下 提取 事件时间 和 生成 watermark的 抽象类
                 // 第一个，需要 重写 extractTimestamp => 如何 从数据中 抽取出 事件时间
                 // 第二个，传参 => 最大乱序程序，是一个等待时间
-
 
                 // 乱序 => 时间大的先到了，
                 // 假设数据是 1，2，3，4，5，6 秒生成的，开3s的滚动窗口 [0,3),[3,6),[6,9)

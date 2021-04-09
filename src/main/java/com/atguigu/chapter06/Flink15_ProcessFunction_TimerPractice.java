@@ -21,7 +21,6 @@ public class Flink15_ProcessFunction_TimerPractice {
         // TODO 1.env指定时间语义
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
-        // 1.
         SingleOutputStreamOperator<WaterSensor> sensorDS = env
                 .socketTextStream("localhost", 9999)
                 .map(new MapFunction<String, WaterSensor>() {
@@ -105,7 +104,6 @@ public class Flink15_ProcessFunction_TimerPractice {
                             }
                         }
                 );
-
 
         processDS.print();
 

@@ -26,7 +26,6 @@ public class Flink08_Watermark_Periodic {
         //TODO 设置 周期性 生成 Watermark的时间间隔，默认200ms，一般不改动
 //        env.getConfig().setAutoWatermarkInterval(5000L);
 
-        // 1.
         SingleOutputStreamOperator<WaterSensor> sensorDS = env
                 .socketTextStream("localhost", 9999)
                 .map(new MapFunction<String, WaterSensor>() {

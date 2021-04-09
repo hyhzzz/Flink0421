@@ -20,7 +20,6 @@ public class Flink02_Window_CountWindow {
         //读数据
         DataStreamSource<String> socketDS = env.socketTextStream("localhost", 9999);
 
-
         KeyedStream<Tuple2<String, Integer>, String> dataKS = socketDS.map(new MapFunction<String, Tuple2<String, Integer>>() {
             @Override
             public Tuple2<String, Integer> map(String s) throws Exception {
@@ -35,7 +34,6 @@ public class Flink02_Window_CountWindow {
 //                .countWindow(3)// 滚动窗口
                 .countWindow(3,2)//滑动窗口
                 .sum(1).print();
-
 
         env.execute();
 

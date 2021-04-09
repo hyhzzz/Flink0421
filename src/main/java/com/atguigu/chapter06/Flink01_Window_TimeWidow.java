@@ -23,7 +23,6 @@ public class Flink01_Window_TimeWidow {
         //读数据
         DataStreamSource<String> socketDS = env.socketTextStream("localhost", 9999);
 
-
         //TODO 开窗
         // datastream可以直接调用开窗的方法，但是都带all
         // 这种情况下 所有数据 不分组 都在窗口

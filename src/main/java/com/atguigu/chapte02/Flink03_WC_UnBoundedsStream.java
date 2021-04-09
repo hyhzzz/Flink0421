@@ -41,6 +41,7 @@ public class Flink03_WC_UnBoundedsStream {
 
         // 2.2 按照 word 分组
         KeyedStream<Tuple2<String, Integer>, Tuple> wordAndOneKS = wordAndOneTuple.keyBy(0);
+
         // 2.3 聚合
         SingleOutputStreamOperator<Tuple2<String, Integer>> resultDS = wordAndOneKS.sum(1);
 
@@ -52,6 +53,4 @@ public class Flink03_WC_UnBoundedsStream {
 
 
     }
-
-
 }

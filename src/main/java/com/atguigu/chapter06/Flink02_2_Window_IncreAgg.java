@@ -17,7 +17,6 @@ public class Flink02_2_Window_IncreAgg {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setParallelism(1);
 
-        // 1.
         DataStreamSource<String> socketDS = env.socketTextStream("localhost", 9999);
 
         KeyedStream<Tuple2<String, Integer>, String> dataKS = socketDS
@@ -35,7 +34,6 @@ public class Flink02_2_Window_IncreAgg {
 
         //TODO 增量聚合
         // 来一条处理一条，窗口关闭的时候，才会输出一次结果
-
         dataWS
 //                .reduce(new ReduceFunction<Tuple2<String, Integer>>() {
 //                    @Override

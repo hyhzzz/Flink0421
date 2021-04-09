@@ -20,7 +20,6 @@ public class Flink03_TimeCharacteristic_EventTime {
         // TODO 1.env指定时间语义
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
-        // 1.
         SingleOutputStreamOperator<WaterSensor> sensorDS = env
                 .socketTextStream("localhost", 9999)
                 .map(new MapFunction<String, WaterSensor>() {
@@ -31,7 +30,7 @@ public class Flink03_TimeCharacteristic_EventTime {
 
                     }
                 })
-                // TODO 2.指定如何 从数据中 抽取出 事件时间，时间单位是 ms
+                // TODO 2.指定如何从数据中抽取出事件时间，时间单位是 ms
                 .assignTimestampsAndWatermarks(
                         new AscendingTimestampExtractor<WaterSensor>() {
                             @Override
@@ -40,7 +39,6 @@ public class Flink03_TimeCharacteristic_EventTime {
                             }
                         }
                 );
-
 
         // 分组、开窗、聚合
         sensorDS
@@ -51,15 +49,12 @@ public class Flink03_TimeCharacteristic_EventTime {
                          * 全窗口函数：整个窗口的本组数据，存起来，关窗的时候一次性一起计算
                          */
                         new ProcessWindowFunction<WaterSensor, Long, String, TimeWindow>() {
-
                             @Override
                             public void process(String s, Context context, Iterable<WaterSensor> elements, Collector<Long> out) throws Exception {
                                 out.collect(elements.spliterator().estimateSize());
                             }
                         })
                 .print();
-
-
         env.execute();
     }
 }
