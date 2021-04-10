@@ -76,7 +76,6 @@ public class Flink26_Case_HotPageViewAnalysis {
                 .process(new TopNPageView(3))
                 .print();
 
-
         env.execute();
     }
 

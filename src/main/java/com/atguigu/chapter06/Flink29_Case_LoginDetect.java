@@ -62,7 +62,6 @@ public class Flink29_Case_LoginDetect {
 
         resultDS.print();
 
-
         env.execute();
     }
 

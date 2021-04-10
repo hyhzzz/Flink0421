@@ -86,7 +86,6 @@ public class Flink07_Case_OrderTxDetectWithIntervalJoin {
 
         resultDS.print();
 
-
         env.execute();
     }
 

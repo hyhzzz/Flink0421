@@ -82,7 +82,5 @@ public class Flink01_CEP_API {
         selectDS.print();
 
         env.execute();
-
-
     }
 }

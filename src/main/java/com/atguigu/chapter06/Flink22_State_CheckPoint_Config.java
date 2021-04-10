@@ -43,8 +43,6 @@ public class Flink22_State_CheckPoint_Config {
         env.getCheckpointConfig().setPreferCheckpointForRecovery(false);    // 默认为 false，表示从 ck恢复；true，从savepoint恢复
         env.getCheckpointConfig().setTolerableCheckpointFailureNumber(3);    // 允许当前checkpoint失败的次数
 
-
-        // 1.
         SingleOutputStreamOperator<WaterSensor> sensorDS = env
                 .socketTextStream("localhost", 9999)
                 .map(new MapFunction<String, WaterSensor>() {

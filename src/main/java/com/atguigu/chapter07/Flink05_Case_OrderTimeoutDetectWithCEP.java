@@ -94,7 +94,6 @@ public class Flink05_Case_OrderTimeoutDetectWithCEP {
         });
 
         resultDS.print();
-
         env.execute();
     }
 }

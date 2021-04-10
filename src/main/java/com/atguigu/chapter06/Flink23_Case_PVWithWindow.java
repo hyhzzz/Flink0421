@@ -71,7 +71,6 @@ public class Flink23_Case_PVWithWindow {
 
         // 3.打印
         pvDS.print("pv");
-
         env.execute();
     }
 

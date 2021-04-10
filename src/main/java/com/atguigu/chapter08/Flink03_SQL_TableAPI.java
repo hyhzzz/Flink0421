@@ -30,7 +30,6 @@ public class Flink03_SQL_TableAPI {
                     public WaterSensor map(String value) throws Exception {
                         String[] datas = value.split(",");
                         return new WaterSensor(datas[0], Long.valueOf(datas[1]), Integer.valueOf(datas[2]));
-
                     }
                 })
                 .assignTimestampsAndWatermarks(
@@ -77,7 +76,6 @@ public class Flink03_SQL_TableAPI {
 
         // 使用 TableAPI里的 insertInto, 把一张表的数据 插入到 另一张表(外部系统抽象成的 Table)
         resultTable.insertInto("fsTable");
-
         env.execute();
     }
 }

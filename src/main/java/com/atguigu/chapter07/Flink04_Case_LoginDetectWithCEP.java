@@ -85,7 +85,6 @@ public class Flink04_Case_LoginDetectWithCEP {
         });
 
         resultDS.print();
-
         env.execute();
     }
 }

@@ -89,8 +89,6 @@ public class Flink24_Case_UVWithWindow {
                     }
                 }
         );
-
-
         uvDS.print("uv");
 
         env.execute();

@@ -60,7 +60,6 @@ public class Flink02_SQL_TableAPI {
 //                .aggregate("count(id) as cnt")
                 .select("id,count(id)");
 
-
         // 4. 把 Table转换成 DataStream
         // 如果需要更新数据，要使用 toRetractStream => 撤回流
         // 更新过程 => 将老的数据删掉 ， 再将新的数据插入

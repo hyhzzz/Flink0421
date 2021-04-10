@@ -96,7 +96,6 @@ public class Flink03_CEP_API {
         );
 
         selectDS.print("cep");
-
         env.execute();
     }
 }

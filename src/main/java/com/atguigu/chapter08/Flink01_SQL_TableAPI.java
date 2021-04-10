@@ -66,7 +66,6 @@ public class Flink01_SQL_TableAPI {
 //        }));
 
         resultDS.print();
-
         env.execute();
     }
 }

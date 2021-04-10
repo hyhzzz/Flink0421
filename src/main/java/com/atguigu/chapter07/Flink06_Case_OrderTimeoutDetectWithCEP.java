@@ -110,7 +110,6 @@ public class Flink06_Case_OrderTimeoutDetectWithCEP {
         }
     }
 
-
     public static class SelectFunction implements PatternSelectFunction<OrderEvent, String> {
 
         @Override

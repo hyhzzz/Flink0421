@@ -55,7 +55,7 @@ public class Flink04_SQL_SQLAPI {
         // => 可以将 DataStream 转成 Table对象，并且给一个 表名,可以指定 字段名
         // => 也可以将 Table对象，给一个 表名，不能再指定 字段名
 //        tableEnv.createTemporaryView("sensorTable", sensorTable);
-        tableEnv.createTemporaryView("sensorTable", sensorDS,"id,ts,vc");
+        tableEnv.createTemporaryView("sensorTable", sensorDS, "id,ts,vc");
 
         //TODO 3. 使用 SQL进行处理
 //        Table resultTable = tableEnv.sqlQuery("select * from " + sensorTable);
@@ -64,7 +64,6 @@ public class Flink04_SQL_SQLAPI {
         tableEnv
                 .toAppendStream(resultTable, Row.class)
                 .print();
-
         env.execute();
     }
 }

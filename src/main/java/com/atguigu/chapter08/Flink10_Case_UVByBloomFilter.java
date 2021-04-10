@@ -74,8 +74,6 @@ public class Flink10_Case_UVByBloomFilter {
         SingleOutputStreamOperator<String> uvDS = uvWS.aggregate(new AggWithBloomFilter(), new MyProcessWindowFunction());
 
         uvDS.print();
-
-
         env.execute();
     }
 

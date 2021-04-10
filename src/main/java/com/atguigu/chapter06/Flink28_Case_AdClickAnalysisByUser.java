@@ -145,7 +145,6 @@ public class Flink28_Case_AdClickAnalysisByUser {
         }
     }
 
-
     public static class AdCountResultWithWindowEnd extends ProcessWindowFunction<Long, HotAdClickByUser, Tuple2<Long, Long>, TimeWindow> {
 
         @Override

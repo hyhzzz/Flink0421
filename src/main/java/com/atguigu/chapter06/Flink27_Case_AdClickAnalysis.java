@@ -28,7 +28,6 @@ import java.util.List;
 
 /**
  * 每隔5秒，输出最近10分钟内 不同省份点击最多的广告排名（）
-
  */
 public class Flink27_Case_AdClickAnalysis {
     public static void main(String[] args) throws Exception {

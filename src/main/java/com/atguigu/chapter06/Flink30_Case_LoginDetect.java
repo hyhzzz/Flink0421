@@ -52,7 +52,6 @@ public class Flink30_Case_LoginDetect {
         // 3. 如果是 2s内 连续5次失败呢？
 
         // 第一条数据
-
         // 2.处理数据
         // 2.1 过滤
         SingleOutputStreamOperator<LoginEvent> filterDS = loginDS.filter(data -> "fail".equals(data.getEventType()));

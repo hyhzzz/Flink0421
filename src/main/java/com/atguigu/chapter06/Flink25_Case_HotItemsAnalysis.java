@@ -42,7 +42,6 @@ public class Flink25_Case_HotItemsAnalysis {
                         }
                 );
 
-
         //处理数据
         //过滤出pv行为
         SingleOutputStreamOperator<UserBehavior> userBehaviorFilter = userBehaviorDS.filter(data -> "pv".equals(data.getBehavior()));
